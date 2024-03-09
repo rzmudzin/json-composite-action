@@ -19,7 +19,7 @@ outputs:
     value: ${{ toJSON(steps.json-extended-ops.outputs) }}    
   has-extended-outputs:
     description: "Has Json Extended Composite Action Outputs"
-    value: ${{ steps.json-extended-ops.outputs.has-extended-ops-results }}
+    value: ${{ steps.json-extended-ops.outputs.has-extended-ops-results || false }}
 runs:
   using: "composite"
   steps:
