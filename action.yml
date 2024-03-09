@@ -19,7 +19,7 @@ runs:
       run: |
          echo "Json Ops First Number ${FIRST_NUMBER}"
          echo "Json Ops Second Number: ${SECOND_NUMBER}"
-         echo "result=json stuff" >> $GITHUB_OUTPUT
+         echo "result=stuff" >> $GITHUB_OUTPUT
       shell: bash
       env:
         SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
