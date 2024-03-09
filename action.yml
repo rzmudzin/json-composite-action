@@ -7,6 +7,9 @@ inputs:
   actionInputs:
     description: 'Inputs'
     required: true
+  enable-extended-ops:
+    type: boolean
+    description: Enable Extended Ops
 outputs:
   json-action-outputs:
     description: "Json Composite Action Outputs"
@@ -14,12 +17,16 @@ outputs:
   json-action-extended-outputs:
     description: "Json Composite Action Outputs"
     value: ${{ toJSON(steps.json-extended-ops.outputs) }}    
+  has-extended-outputs:
+    description: "Json Composite Action Outputs"
+    value: false
 runs:
   using: "composite"
   steps:
     - name: Json Operations
       id: json-ops
       run: |
+         echo "Extended Ops Enabled? ${{ inputs.enable-extended-ops }}"
          echo "Json Action Working Directory: ${GITHUB_WORKSPACE}"
          echo "Json Ops First Number ${FIRST_NUMBER}"
          echo "Json Ops Second Number: ${SECOND_NUMBER}"
