@@ -26,6 +26,7 @@ runs:
     - name: Json Operations
       id: json-ops
       run: |
+         echo App: ${{ env.appName }}
          echo "Extended Ops Enabled? ${{ inputs.enable-extended-ops || false }}"
          echo "Extended Ops Enabled? ${{ inputs.enable-extended-ops }}"
          echo "Json Action Working Directory: ${GITHUB_WORKSPACE}"
