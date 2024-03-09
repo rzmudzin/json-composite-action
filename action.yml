@@ -37,7 +37,7 @@ runs:
         FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-first-value }}
         SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-second-value }}
     - name: Json Extended Operations
-      if: ${{ inputs.enable-extended-ops || false }}
+      if: ${{ inputs.enable-extended-ops || false }} == 'true'
       id: json-extended-ops
       run: |
          echo "Json Extended Ops First Number ${FIRST_NUMBER}"
