@@ -27,6 +27,7 @@ runs:
       id: json-ops
       run: |
          echo "Extended Ops Enabled? ${{ inputs.enable-extended-ops || false }}"
+         echo "Extended Ops Enabled? ${{ inputs.enable-extended-ops }}"
          echo "Json Action Working Directory: ${GITHUB_WORKSPACE}"
          echo "Json Ops First Number ${FIRST_NUMBER}"
          echo "Json Ops Second Number: ${SECOND_NUMBER}"
