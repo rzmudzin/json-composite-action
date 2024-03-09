@@ -11,6 +11,9 @@ outputs:
   json-action-outputs:
     description: "Json Composite Action Outputs"
     value: ${{ toJSON(steps.json-ops.outputs) }}
+  json-action-extended-outputs:
+    description: "Json Composite Action Outputs"
+    value: ${{ toJSON(steps.json-extended-ops.outputs) }}    
 runs:
   using: "composite"
   steps:
@@ -26,6 +29,19 @@ runs:
         SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
         FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-first-value }}
         SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-second-value }}
+    - name: Json Extended Operations
+      id: json-extended-ops
+      run: |
+         echo "Json Extended Ops First Number ${FIRST_NUMBER}"
+         echo "Json Extended Ops Second Number: ${SECOND_NUMBER}"
+         echo "extended-ops-info=things and such" >> $GITHUB_OUTPUT
+         echo "extended-ops-data=Maybe a larger payload, maybe in json" >> $GITHUB_OUTPUT
+         echo "extended-ops-results-path=Path to some folder" >> $GITHUB_OUTPUT
+      shell: bash
+      env:
+        SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
+        FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-first-value }}
+        SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-second-value }}        
 
 #    - name: Random Number Generator
 #      id: random-number-generator
