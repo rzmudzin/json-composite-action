@@ -40,6 +40,7 @@ runs:
       if: ${{ inputs.enable-extended-ops || false }} == 'true'
       id: json-extended-ops
       run: |
+         echo inputs.enable-extended-ops: ${{ inputs.enable-extended-ops }}
          echo "Json Extended Ops First Number ${FIRST_NUMBER}"
          echo "Json Extended Ops Second Number: ${SECOND_NUMBER}"
          echo "extended-ops-info=things and such" >> $GITHUB_OUTPUT
