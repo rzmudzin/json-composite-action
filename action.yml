@@ -10,7 +10,7 @@ inputs:
 outputs:
   json-action-outputs:
     description: "Json Composite Action Outputs"
-    value: ${{ toJSON(steps.number-addition.outputs) }}
+    value: ${{ toJSON(steps.json-ops.outputs) }}
 runs:
   using: "composite"
   steps:
@@ -19,7 +19,7 @@ runs:
       run: |
          echo "Json Ops First Number ${FIRST_NUMBER}"
          echo "Json Ops Second Number: ${SECOND_NUMBER}"
-         echo "result=stuff" >> $GITHUB_OUTPUT
+         echo "result=some stuff" >> $GITHUB_OUTPUT
       shell: bash
       env:
         SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
