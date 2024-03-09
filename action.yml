@@ -18,8 +18,8 @@ outputs:
     description: "Json Composite Action Outputs"
     value: ${{ toJSON(steps.json-extended-ops.outputs) }}    
   has-extended-outputs:
-    description: "Json Composite Action Outputs"
-    value: false
+    description: "Has Json Extended Composite Action Outputs"
+    value: ${{ steps.json-extended-ops.outputs.has-extended-ops-results }}
 runs:
   using: "composite"
   steps:
@@ -48,6 +48,7 @@ runs:
          echo "extended-ops-info=things and such" >> $GITHUB_OUTPUT
          echo "extended-ops-data=Maybe a larger payload, maybe in json" >> $GITHUB_OUTPUT
          echo "extended-ops-results-path=Path to some folder" >> $GITHUB_OUTPUT
+          echo "has-extended-ops-results=true" >> $GITHUB_OUTPUT
       shell: bash
       env:
         SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
